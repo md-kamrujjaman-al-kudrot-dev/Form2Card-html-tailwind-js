@@ -8,6 +8,22 @@ let part2 = document.getElementById("part2")
 form.addEventListener("submit", (dtls) => {
     dtls.preventDefault()// stoped reload
 
+    let isInputValue = true;
+
+    input_value.forEach((info)=>{
+        if(info.value ===""){
+            isInputValue = false;
+        }
+    })
+
+    if (isInputValue){
+        uiRander();
+        removeInput();
+    }
+})
+
+
+function uiRander() {
     let div = document.createElement("div")
     div.className = "input_card  bg-[#1A1A1A] text-white w-80 flex flex-col items-center content-center p-4";
 
@@ -32,9 +48,6 @@ form.addEventListener("submit", (dtls) => {
 
 
 
-
-
-
     imgDiv.appendChild(img)
     div.appendChild(imgDiv)
 
@@ -44,14 +57,12 @@ form.addEventListener("submit", (dtls) => {
 
     part2.appendChild(div)
 
+}
 
+function removeInput() {
     input_value.forEach(function (dts) {
-
-        if (dts.value !== "submit") {
+        if (dts.type !== "submit") {
             dts.value = "";
         }
-
-
     })
-
-})
+}
